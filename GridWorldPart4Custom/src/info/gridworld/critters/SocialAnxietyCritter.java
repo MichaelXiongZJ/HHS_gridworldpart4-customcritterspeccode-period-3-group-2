@@ -98,7 +98,11 @@ public class SocialAnxietyCritter extends Critter
 		
 		
 	}
-	
+
+	/**Find the closest critter and move away from the closest critter
+	 * @author Michael Xiong
+	 * @return the location of the next step.
+	 */
 	public ArrayList<Location> getMoveLocations() {
 		//Find closest actor
 		ArrayList<Critter> listOfActors = crittersToRunFrom;
@@ -134,8 +138,6 @@ public class SocialAnxietyCritter extends Critter
 		//Get the next location
 		ArrayList<Location> nextLoc = new ArrayList<Location>();
 		nextLoc.add(0, getLocation().getAdjacentLocation(facingDeg));	
-		//Check if location valid
-		
 		return nextLoc;
 	}
 
