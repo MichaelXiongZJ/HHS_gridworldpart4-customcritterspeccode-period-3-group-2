@@ -10,18 +10,9 @@ import info.gridworld.grid.*;
  */
 public class SocialAnxietyCritter extends Critter
 {
-	
-	public void makeMove(Location loc) {
-		int newDirection = getLocation().getDirectionToward(loc);
-		setDirection(newDirection);
-		
-		if (loc == null) {
-            removeSelfFromGrid();
-		}
-        else {
-            moveTo(loc); 
-        }
-	}
+	private boolean willBecomeRock = false;
+	ArrayList<Critter> crittersToRunFrom = new ArrayList<Critter>();
+
 	
 	public ArrayList<Actor> getActors() {
         ArrayList<Actor> actors = new ArrayList<Actor>();
@@ -40,6 +31,55 @@ public class SocialAnxietyCritter extends Critter
         
         return actors;
     }
+	
+	/**Processes the Actors in the Grid and determines whether this SACritter will turn into a SARock
+	 * Modifies the crittersToRunFrom ArrayList, which gives you all the possible Critters that this SACritter could move away from
+	 * @param actors is the actors ArrayList from the getActors() method
+	 * @author Christopher L
+	 */
+	public void processActors(ArrayList<Actor> actors) {
+		ArrayList<Actor> adjacentActors = getGrid().getNeighbors(getLocation());
+		willBecomeRock = false;
+		for (Actor a: adjacentActors) {
+			if( a instanceof Critter) {
+				willBecomeRock = true;
+			}
+		}
+        int row = getLocation().getRow();
+        int col = getLocation().getCol();
+		//i is a row #, j is a column #
+		for (int i = -2; i<= 2; i++) {
+			for (int j = -2; j<= 2; j++) {
+				boolean selectThisCell = false;
+				if (i == -2 || i == 2) {
+					selectThisCell = true;
+				}
+				else if(i == -1 || i == 0 || i == 1) {
+					if (j == -2 || j==2) {
+						selectThisCell = true;
+					}
+				}
+				
+			
+				
+				if (selectThisCell) {
+					Location loc = new Location(row + i, col + j);
+					if ( getGrid().isValid(loc)) {
+						Actor a = getGrid().get(loc);
+		                if (a != null && a instanceof Critter)
+		                    crittersToRunFrom.add((Critter)a); 
+					}
+				}
+				
+			}
+			
+			
+		}
+		
+		
+		
+		
+	}
 	
 	public ArrayList<Location> getMoveLocations() {
 		//Find closest actor
@@ -71,6 +111,20 @@ public class SocialAnxietyCritter extends Critter
 	public void selectMoveLocations(Location loc) {
 
 	}
+	
+	
+	public void makeMove(Location loc) {
+		int newDirection = getLocation().getDirectionToward(loc);
+		setDirection(newDirection);
+		
+		if (loc == null) {
+            removeSelfFromGrid();
+		}
+        else {
+            moveTo(loc); 
+        }
+	}
+	
 	
 	//pass the number 45 numberToRoundTo to round to the nearest 45 degrees
 	private int roundNumber(int number, int numberToRoundTo) {
