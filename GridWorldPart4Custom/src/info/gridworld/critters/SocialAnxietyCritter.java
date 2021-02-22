@@ -83,9 +83,9 @@ public class SocialAnxietyCritter extends Critter
 	
 	public void selectMoveLocations(Location loc) { 
 		
-		// loc = SocialAnxietyCritter.getAdjacentLocation();
+		 Location adjLoc = loc.getAdjacentLocation();
 		
-		return loc;
+		return adjLoc;
 	}
 	
 	//pass the number 45 numberToRoundTo to round to the nearest 45 degrees
