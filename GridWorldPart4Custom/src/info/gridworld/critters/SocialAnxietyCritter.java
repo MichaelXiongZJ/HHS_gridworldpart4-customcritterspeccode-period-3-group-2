@@ -50,4 +50,8 @@ public class SocialAnxietyCritter extends Critter
 		
 		return null;
 	}
+	
+	 public void selectMoveLocations() {
+		 
+	 }
 }
