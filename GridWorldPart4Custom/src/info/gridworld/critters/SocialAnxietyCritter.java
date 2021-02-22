@@ -1,7 +1,6 @@
 package info.gridworld.critters;
 
 import java.util.ArrayList;
-
 import info.gridworld.actor.*;
 import info.gridworld.grid.*;
 
@@ -23,6 +22,24 @@ public class SocialAnxietyCritter extends Critter
             moveTo(loc); 
         }
 	}
+	
+	public ArrayList<Actor> getActors() {
+        ArrayList<Actor> actors = new ArrayList<Actor>();
+        int row = getLocation().getRow();
+        int col = getLocation().getCol();
+        for (int i = -2; i < 3; i++) {
+        	if (row + i < 0) continue; 
+        	for (int j = -2; j < 3; j++) {
+        		if (col + j < 0) continue;
+        		Location currLoc = new Location(row + i, col + j);
+        		Actor a = getGrid().get(currLoc);
+                if (a != null)
+                    actors.add(a); 
+        	}
+        }
+        
+        return actors;
+    }
 	
 	public ArrayList<Location> getMoveLocations() {
 		//Find closest actor
