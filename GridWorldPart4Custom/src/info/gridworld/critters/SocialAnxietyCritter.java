@@ -14,6 +14,24 @@ public class SocialAnxietyCritter extends Critter
 	ArrayList<Critter> crittersToRunFrom = new ArrayList<Critter>();
 
 	
+
+	public void makeMove(Location loc) {
+		int newDirection = getLocation().getDirectionToward(loc);
+		setDirection(newDirection);
+		
+		if (loc == null) {
+            removeSelfFromGrid();
+		}
+        else {
+            moveTo(loc); 
+        }
+	}
+
+	/**
+	 * A SocialAnxietyCritter gets the actors within 2 squares of it. 
+	 * @return actors a list of actors occupying these locations
+	 */
+	
 	public ArrayList<Actor> getActors() {
         ArrayList<Actor> actors = new ArrayList<Actor>();
         int row = getLocation().getRow();
@@ -108,22 +126,19 @@ public class SocialAnxietyCritter extends Critter
 		return null;
 	}
 
-	public void selectMoveLocations(Location loc) {
-
-	}
 	
 	
-	public void makeMove(Location loc) {
-		int newDirection = getLocation().getDirectionToward(loc);
-		setDirection(newDirection);
-		
-		if (loc == null) {
-            removeSelfFromGrid();
-		}
-        else {
-            moveTo(loc); 
-        }
+	//return the Location that is one cell in front of the Critter (just one method from Location)
+	/**
+	 * A SocialAnxietyCritter checks the Location that is one cell in front of the Critter
+	 * @return the Location that is one cell in front of the Critter
+	 */
+	
+	public void selectMoveLocations(Location loc) { 
+		Location adjLoc = loc.getAdjacentLocation();
+		return adjLoc;
 	}
+	
 	
 	
 	//pass the number 45 numberToRoundTo to round to the nearest 45 degrees
