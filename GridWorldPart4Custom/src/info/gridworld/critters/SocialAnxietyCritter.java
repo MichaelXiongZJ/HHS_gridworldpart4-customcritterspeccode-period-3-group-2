@@ -71,7 +71,7 @@ public class SocialAnxietyCritter extends Critter
 	//return the Location that is one cell in front of the Critter (just one method from Location)
 	public void selectMoveLocations(Location loc) { 
 		
-		//loc = getAdjacentLocation();
+		loc = SocialAnxietyCritter.getAdjacentLocation();
 		
 		return loc;
 	}
