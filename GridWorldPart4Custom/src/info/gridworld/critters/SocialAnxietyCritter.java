@@ -62,15 +62,21 @@ public class SocialAnxietyCritter extends Critter
 		//Find the location to go
 		int xDiff = x - listOfActors.get(actorIndex).getLocation().getCol();
 		int yDiff = y - listOfActors.get(actorIndex).getLocation().getRow();
-		if( (xDiff==0&&yDiff<0) || ())
+		if( (xDiff==0&&yDiff<0) )
 		//Check if location valid
 		
 		return null;
 	}
-	
-	 public void selectMoveLocations(Location loc) {
 
-		 }
-		 
-	 }
+	public void selectMoveLocations(Location loc) {
+
+	}
+	
+	//pass the number 45 numberToRoundTo to round to the nearest 45 degrees
+	private int roundNumber(int number, int numberToRoundTo) {
+		int val = (int) (numberToRoundTo * Math.round((number +0.0 )/ numberToRoundTo) );
+		return val;
+	}
+
 }
+
