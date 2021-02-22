@@ -132,10 +132,11 @@ public class SocialAnxietyCritter extends Critter
 		}
 		int facingDeg = roundNumber((int)deg, 45);
 		//Get the next location
-		
+		ArrayList<Location> nextLoc = new ArrayList<Location>();
+		nextLoc.add(0, getLocation().getAdjacentLocation(facingDeg));	
 		//Check if location valid
 		
-		return null;
+		return nextLoc;
 	}
 
 	
