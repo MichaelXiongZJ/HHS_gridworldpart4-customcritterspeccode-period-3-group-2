@@ -22,6 +22,11 @@ public class SocialAnxietyCritter extends Critter
             moveTo(loc); 
         }
 	}
+
+	/**
+	 * A SocialAnxietyCritter gets the actors within 2 squares of it. 
+	 * @return actors a list of actors occupying these locations
+	 */
 	
 	public ArrayList<Actor> getActors() {
         ArrayList<Actor> actors = new ArrayList<Actor>();
