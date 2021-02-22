@@ -73,10 +73,17 @@ public class SocialAnxietyCritter extends Critter
 		return null;
 	}
 
+	
+	
 	//return the Location that is one cell in front of the Critter (just one method from Location)
+	/**
+	 * A SocialAnxietyCritter checks the Location that is one cell in front of the Critter
+	 * @return the Location that is one cell in front of the Critter
+	 */
+	
 	public void selectMoveLocations(Location loc) { 
 		
-		loc = SocialAnxietyCritter.getAdjacentLocation();
+		// loc = SocialAnxietyCritter.getAdjacentLocation();
 		
 		return loc;
 	}
