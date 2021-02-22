@@ -101,7 +101,7 @@ public class SocialAnxietyCritter extends Critter
 	
 	public ArrayList<Location> getMoveLocations() {
 		//Find closest actor
-		ArrayList<Actor> listOfActors = getActors();
+		ArrayList<Critter> listOfActors = crittersToRunFrom;
 		int x = getLocation().getCol();
 		int y = getLocation().getRow();
 		int actorIndex = 0;
@@ -117,10 +117,22 @@ public class SocialAnxietyCritter extends Critter
 				actorIndex = a;
 			}
 		}
-		//Find the location to go
+		//Get the angle it will turn to
 		int xDiff = x - listOfActors.get(actorIndex).getLocation().getCol();
 		int yDiff = y - listOfActors.get(actorIndex).getLocation().getRow();
-		if( (xDiff==0&&yDiff<0) )
+		double deg = 0;
+		if (yDiff < 0) {
+			deg = Math.atan(xDiff/yDiff);
+		}else {
+			deg = Math.atan(yDiff/xDiff);
+		}
+		deg = Math.toDegrees(deg) + 180;
+		if (deg >360) {
+			deg = deg - 360;
+		}
+		int facingDeg = roundNumber((int)deg, 45);
+		//Get the next location
+		
 		//Check if location valid
 		
 		return null;
