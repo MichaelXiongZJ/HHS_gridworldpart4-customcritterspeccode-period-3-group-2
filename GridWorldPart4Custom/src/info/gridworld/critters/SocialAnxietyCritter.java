@@ -68,8 +68,12 @@ public class SocialAnxietyCritter extends Critter
 		return null;
 	}
 
-	public void selectMoveLocations(Location loc) {
-
+	//return the Location that is one cell in front of the Critter (just one method from Location)
+	public void selectMoveLocations(Location loc) { 
+		
+		//loc = getAdjacentLocation();
+		
+		return loc;
 	}
 	
 	//pass the number 45 numberToRoundTo to round to the nearest 45 degrees
