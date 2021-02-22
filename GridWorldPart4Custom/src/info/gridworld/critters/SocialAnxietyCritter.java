@@ -15,17 +15,7 @@ public class SocialAnxietyCritter extends Critter
 
 	
 
-	public void makeMove(Location loc) {
-		int newDirection = getLocation().getDirectionToward(loc);
-		setDirection(newDirection);
-		
-		if (loc == null) {
-            removeSelfFromGrid();
-		}
-        else {
-            moveTo(loc); 
-        }
-	}
+	
 
 	/**
 	 * A SocialAnxietyCritter gets the actors within 2 squares of it. 
@@ -154,7 +144,17 @@ public class SocialAnxietyCritter extends Critter
 		return adjLoc;
 	}
 	
-	
+	public void makeMove(Location loc) {
+		int newDirection = getLocation().getDirectionToward(loc);
+		setDirection(newDirection);
+		
+		if (loc == null) {
+            removeSelfFromGrid();
+		}
+        else {
+            moveTo(loc); 
+        }
+	}
 	
 	//pass the number 45 numberToRoundTo to round to the nearest 45 degrees
 	private int roundNumber(int number, int numberToRoundTo) {
