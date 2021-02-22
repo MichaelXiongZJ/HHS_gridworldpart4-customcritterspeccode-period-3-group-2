@@ -11,7 +11,7 @@ import info.gridworld.grid.*;
 public class SocialAnxietyCritter extends Critter
 {
 	private boolean willBecomeRock = false;
-	ArrayList<Actor> crittersToRunFrom = new ArrayList<Actor>();
+	ArrayList<Critter> crittersToRunFrom = new ArrayList<Critter>();
 
 	
 
