@@ -82,9 +82,7 @@ public class SocialAnxietyCritter extends Critter
 	 */
 	
 	public void selectMoveLocations(Location loc) { 
-		
-		 Location adjLoc = loc.getAdjacentLocation();
-		
+		Location adjLoc = loc.getAdjacentLocation();
 		return adjLoc;
 	}
 	
