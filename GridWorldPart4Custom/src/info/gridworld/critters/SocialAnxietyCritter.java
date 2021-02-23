@@ -31,9 +31,13 @@ public class SocialAnxietyCritter extends Critter
         	for (int j = -2; j < 3; j++) {
         		if (col + j < 0) continue;
         		Location currLoc = new Location(row + i, col + j);
-        		Actor a = getGrid().get(currLoc);
-                if (a != null)
-                    actors.add(a); 
+        		
+        		if(getGrid().isValid(currLoc)) {
+        			Actor a = getGrid().get(currLoc);
+                    if (a != null)
+                        actors.add(a); 
+        		}
+        		
         	}
         }
         
@@ -48,6 +52,8 @@ public class SocialAnxietyCritter extends Critter
 	public void processActors(ArrayList<Actor> actors) {
 		ArrayList<Actor> adjacentActors = getGrid().getNeighbors(getLocation());
 		willBecomeRock = false;
+		crittersToRunFrom = new ArrayList<Critter>();
+		
 		for (Actor a: adjacentActors) {
 			if( a instanceof Critter) {
 				willBecomeRock = true;
@@ -143,7 +149,12 @@ public class SocialAnxietyCritter extends Critter
 	 * @return the Location that is one cell in front of the Critter
 	 */
 	 public Location selectMoveLocation(ArrayList<Location> locs) {
-		 return getLocation();
+		 int n = locs.size();
+		 if (n==0)
+			 return getLocation();
+		 
+		 int x = (int) (n * Math.random());
+		 return locs.get(x);
 	 }
 	
 	 
@@ -155,13 +166,24 @@ public class SocialAnxietyCritter extends Critter
 		setDirection(newDirection);
 		
 		if (loc == null || willBecomeRock) {
-            removeSelfFromGrid();
-            SocialAnxietyRock rockForm = new SocialAnxietyRock();
             
-            getGrid().put(getLocation(), rockForm);//Chris: I'm not really sure if this works
+			System.out.println("makeMove: 1");
+//			removeSelfFromGrid();
+			System.out.println("makeMove: 2");
+            
+//            SocialAnxietyRock rockForm = new SocialAnxietyRock();
+            
+            System.out.println("makeMove: 3");
+            
+//            getGrid().put(getLocation(), rockForm);//Chris: I'm not really sure if this works
+            
+            System.out.println("makeMove: 4");
+
 		}
         else {
             moveTo(loc); 
+            System.out.println("makeMove: B1");
+
         }
 	}
 	
