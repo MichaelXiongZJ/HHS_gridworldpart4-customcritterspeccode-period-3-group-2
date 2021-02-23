@@ -94,41 +94,45 @@ public class SocialAnxietyCritter extends Critter
 	 * @return the location of the next step.
 	 */
 	public ArrayList<Location> getMoveLocations() {
-		//Find closest actor
-		ArrayList<Critter> listOfActors = crittersToRunFrom;
-		int x = getLocation().getCol();
-		int y = getLocation().getRow();
-		int actorIndex = 0;
-		double[] listOfDistances = new double [getActors().size()];
-		double shortestDistance = Double.MAX_VALUE;
-		for (int a=0; a<listOfActors.size(); a++) {
-			double distance = Math.sqrt(Math.pow(listOfActors.get(a).getLocation().getRow()-y, 2) + Math.pow(listOfActors.get(a).getLocation().getCol()-x, 2));
-			listOfDistances[a] = distance;
-		}
-		for (int a=0; a<listOfDistances.length; a++) {
-			if (shortestDistance < listOfDistances[a]) {
-				shortestDistance = listOfDistances[a];
-				actorIndex = a;
-			}
-		}
-		//Get the angle it will turn to
-		int xDiff = x - listOfActors.get(actorIndex).getLocation().getCol();
-		int yDiff = y - listOfActors.get(actorIndex).getLocation().getRow();
-		double deg = 0;
-		if (yDiff < 0) {
-			deg = Math.atan(xDiff/yDiff);
+		if(crittersToRunFrom.size() == 0) {
+			return super.getMoveLocations();
 		}else {
-			deg = Math.atan(yDiff/xDiff);
-		}
-		deg = Math.toDegrees(deg) + 180;
-		if (deg >360) {
-			deg = deg - 360;
-		}
-		int facingDeg = roundNumber((int)deg, 45);
-		//Get the next location
-		ArrayList<Location> nextLoc = new ArrayList<Location>();
-		nextLoc.add(0, getLocation().getAdjacentLocation(facingDeg));	
-		return nextLoc;
+			//Find closest actor
+			ArrayList<Critter> listOfActors = crittersToRunFrom;
+			int x = getLocation().getCol();
+			int y = getLocation().getRow();
+			int actorIndex = 0;
+			double[] listOfDistances = new double [getActors().size()];
+			double shortestDistance = Double.MAX_VALUE;
+			for (int a=0; a<listOfActors.size(); a++) {
+				double distance = Math.sqrt(Math.pow(listOfActors.get(a).getLocation().getRow()-y, 2) + Math.pow(listOfActors.get(a).getLocation().getCol()-x, 2));
+				listOfDistances[a] = distance;
+			}
+			for (int a=0; a<listOfDistances.length; a++) {
+				if (shortestDistance < listOfDistances[a]) {
+					shortestDistance = listOfDistances[a];
+					actorIndex = a;
+				}
+			}
+			//Get the angle it will turn to
+			int xDiff = x - listOfActors.get(actorIndex).getLocation().getCol();
+			int yDiff = y - listOfActors.get(actorIndex).getLocation().getRow();
+			double deg = 0;
+			if (yDiff < 0) {
+				deg = Math.atan(xDiff/yDiff);
+			}else {
+				deg = Math.atan(yDiff/xDiff);
+			}
+			deg = Math.toDegrees(deg) + 180;
+			if (deg >360) {
+				deg = deg - 360;
+			}
+			int facingDeg = roundNumber((int)deg, 45);
+			//Get the next location
+			ArrayList<Location> nextLoc = new ArrayList<Location>();
+			nextLoc.add(0, getLocation().getAdjacentLocation(facingDeg));	
+			return nextLoc;
+		}	
 	}
 
 	
