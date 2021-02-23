@@ -154,7 +154,25 @@ public class SocialAnxietyCritter extends Critter
 			 return getLocation();
 		 
 		 int x = (int) (n * Math.random());
-		 return locs.get(x);
+		 boolean boo = true;
+		 
+		 
+		 for (int i = x; boo;) {
+			 if (getGrid().isValid(locs.get(i))) {
+				 return locs.get(i);
+			 }
+			 else {
+				 i++;
+				 if (i>= n) {
+					 i = 0;
+				 }
+			 }
+			 
+			 if (i == x) {
+				 return getLocation();
+			 }
+		 }
+		 return getLocation();
 	 }
 	
 	 
@@ -166,18 +184,7 @@ public class SocialAnxietyCritter extends Critter
 		setDirection(newDirection);
 		
 		if (loc == null || willBecomeRock) {
-            
-			System.out.println("makeMove: 1");
-//			removeSelfFromGrid();
-			System.out.println("makeMove: 2");
-            
-//            SocialAnxietyRock rockForm = new SocialAnxietyRock();
-            
-            System.out.println("makeMove: 3");
-            
-//            getGrid().put(getLocation(), rockForm);//Chris: I'm not really sure if this works
-            
-            System.out.println("makeMove: 4");
+            becomeRock();
 
 		}
         else {
@@ -193,5 +200,20 @@ public class SocialAnxietyCritter extends Critter
 		return val;
 	}
 
+	
+	private void becomeRock() {
+		System.out.println("SAC becomeRock(): 1");
+		removeSelfFromGrid();
+		System.out.println("SAC becomeRock(): 2");
+        
+        SocialAnxietyRock rockForm = new SocialAnxietyRock();
+        
+		System.out.println("SAC becomeRock(): 3");
+        rockForm.putSelfInGrid(getGrid(), getLocation());
+        
+//        getGrid().put(getLocation(), rockForm);//Chris: I'm not really sure if this works
+        
+		System.out.println("SAC becomeRock(): 4");
+	}
 }
 
