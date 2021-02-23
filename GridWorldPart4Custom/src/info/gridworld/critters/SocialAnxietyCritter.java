@@ -138,18 +138,23 @@ public class SocialAnxietyCritter extends Critter
 	 * A SocialAnxietyCritter checks the Location that is one cell in front of the Critter
 	 * @return the Location that is one cell in front of the Critter
 	 */
+	 public Location selectMoveLocation(ArrayList<Location> locs) {
+		 return getLocation();
+	 }
 	
-	public void selectMoveLocations(Location loc) { 
-		Location adjLoc = loc.getAdjacentLocation();
-		return adjLoc;
-	}
-	
+	 
+	 /**Moves to a new Location or replaces itself with a SocialAnxietyRock
+	  * 
+	  */
 	public void makeMove(Location loc) {
 		int newDirection = getLocation().getDirectionToward(loc);
 		setDirection(newDirection);
 		
-		if (loc == null) {
+		if (loc == null || willBecomeRock) {
             removeSelfFromGrid();
+            SocialAnxietyRock rockForm = new SocialAnxietyRock();
+            
+            getGrid().put(getLocation(), rockForm);//Chris: I'm not really sure if this works
 		}
         else {
             moveTo(loc); 

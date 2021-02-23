@@ -1,6 +1,8 @@
 package info.gridworld.critters;
 
-public class SocialAnxietyRock 
+import info.gridworld.actor.*;
+
+public class SocialAnxietyRock extends Critter
 {
 
 }
