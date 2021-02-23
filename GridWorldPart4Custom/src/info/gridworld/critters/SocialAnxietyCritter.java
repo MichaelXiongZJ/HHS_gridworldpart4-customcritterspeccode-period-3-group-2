@@ -118,7 +118,7 @@ public class SocialAnxietyCritter extends Critter
 			int xDiff = x - listOfActors.get(actorIndex).getLocation().getCol();
 			int yDiff = y - listOfActors.get(actorIndex).getLocation().getRow();
 			double deg = 0;
-			if (yDiff < 0) {
+			if (yDiff > 0) {
 				deg = Math.atan(xDiff/yDiff);
 			}else {
 				deg = Math.atan(yDiff/xDiff);
