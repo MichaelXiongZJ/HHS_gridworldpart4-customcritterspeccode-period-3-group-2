@@ -154,9 +154,19 @@ public class SocialAnxietyCritter extends Critter
 				deg = deg - 360;
 			}
 			System.out.println("New angle = " + roundNumber((int)deg, 45));
+			
+			
 			//Get the next location
 			ArrayList<Location> nextLoc = new ArrayList<Location>();
-			nextLoc.add(0, getLocation().getAdjacentLocation(roundNumber((int)deg, 45)));
+			
+			
+			//Chris: Uhhh here's a simpler way to do the angle calculations
+			Location otherLoc = listOfActors.get(actorIndex).getLocation();
+			int moveDir = 180+getLocation().getDirectionToward(otherLoc);
+			nextLoc.add(0, getLocation().getAdjacentLocation(moveDir));
+			
+			
+//			nextLoc.add(0, getLocation().getAdjacentLocation(roundNumber((int)deg, 45)));
 			System.out.println("Loc = " + nextLoc.get(0));
 			return nextLoc;
 		}	
