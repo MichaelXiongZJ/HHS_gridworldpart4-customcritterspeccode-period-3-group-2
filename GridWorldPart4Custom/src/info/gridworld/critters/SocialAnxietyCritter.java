@@ -46,8 +46,8 @@ public class SocialAnxietyCritter extends Critter
 	
 	/**Processes the Actors in the Grid and determines whether this SACritter will turn into a SARock
 	 * Modifies the crittersToRunFrom ArrayList, which gives you all the possible Critters that this SACritter could move away from
-	 * @param actors is the actors ArrayList from the getActors() method
-	 * @author Christopher L
+	 * Christopher Lew
+	 * @param actors is the actors ArrayList determined by the getActors() method
 	 */
 	public void processActors(ArrayList<Actor> actors) {
 		ArrayList<Actor> adjacentActors = getGrid().getNeighbors(getLocation());
@@ -207,7 +207,8 @@ public class SocialAnxietyCritter extends Critter
 	
 	 
 	 /**Moves to a new Location or replaces itself with a SocialAnxietyRock
-	  * 
+	  * Christopher Lew
+	  * @param loc is the location to move to. This is determined by selectMoveLocations()
 	  */
 	public void makeMove(Location loc) {
 		System.out.println();
