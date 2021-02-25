@@ -94,13 +94,16 @@ public class SocialAnxietyCritter extends Critter
 		
 		
 	}
+	
 	//Chris: somehow the Critter does not get scared in the right direction?
-	/**Find the closest critter and move away from the closest critter
+	//Mic: I think it's fixed now.
+	/**Find the closest critter and return a location to move away from the it.
 	 * @author Michael Xiong
 	 * @return the location of the next step.
 	 */
 	public ArrayList<Location> getMoveLocations() {
 		if(crittersToRunFrom.size() == 0) {
+			System.out.println("Random");
 			return super.getMoveLocations();
 		}else {
 			//Find closest actor
@@ -146,14 +149,15 @@ public class SocialAnxietyCritter extends Critter
 				System.out.println("Turn angle unknown");
 			}
 			deg = Math.toDegrees(deg);
-			deg = deg + 180;
+			deg += 180;
 			if(deg > 360) {
 				deg = deg - 360;
 			}
-			int facingDeg = roundNumber((int)deg, 45);
+			System.out.println("New angle = " + roundNumber((int)deg, 45));
 			//Get the next location
 			ArrayList<Location> nextLoc = new ArrayList<Location>();
-			nextLoc.add(0, getLocation().getAdjacentLocation(facingDeg));	
+			nextLoc.add(0, getLocation().getAdjacentLocation(roundNumber((int)deg, 45)));
+			System.out.println("Loc = " + nextLoc.get(0));
 			return nextLoc;
 		}	
 	}
