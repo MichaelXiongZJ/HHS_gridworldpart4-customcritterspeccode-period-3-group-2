@@ -94,7 +94,7 @@ public class SocialAnxietyCritter extends Critter
 		
 		
 	}
-
+	//Chris: somehow the Critter does not get scared in the right direction?
 	/**Find the closest critter and move away from the closest critter
 	 * @author Michael Xiong
 	 * @return the location of the next step.
