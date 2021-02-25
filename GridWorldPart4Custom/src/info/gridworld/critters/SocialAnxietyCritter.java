@@ -215,18 +215,21 @@ public class SocialAnxietyCritter extends Critter
 
 	
 	private void becomeRock() {
-		System.out.println("SAC becomeRock(): 1");
-		removeSelfFromGrid();
-		System.out.println("SAC becomeRock(): 2");
+//		System.out.println("SAC becomeRock(): 1");
+//		System.out.println("SAC becomeRock(): 2");
         
         SocialAnxietyRock rockForm = new SocialAnxietyRock();
         
-		System.out.println("SAC becomeRock(): 3");
+//		System.out.println("SAC becomeRock(): 3");
         rockForm.putSelfInGrid(getGrid(), getLocation());
         
 //        getGrid().put(getLocation(), rockForm);//Chris: I'm not really sure if this works
         
-		System.out.println("SAC becomeRock(): 4");
+//		System.out.println("SAC becomeRock(): 4");
+		
+		
+//		removeSelfFromGrid();
+
 	}
 }
 
