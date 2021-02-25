@@ -8,12 +8,18 @@ import info.gridworld.grid.Location;
 public class SocialAnxietyRock extends Critter
 {
 private boolean willBecomeCritter;
+	private int rockTurnNum = 0;//for debugging
 	
+	
+	
+
 	public void processActors(ArrayList<Actor> actors) {
-		System.out.println("\nSARock processing Actors");
-		
+		System.out.println("---\n# of turns as a Rock = "+rockTurnNum);
+		System.out.println("SARock processing Actors");
+
 		willBecomeCritter = false;
-		if (actors.size() == 0) {
+		if (actors.size() == 0) { //if there are no Actor Neighbors
+			willBecomeCritter = true;
 			return;
 		}
 		else {
@@ -21,48 +27,49 @@ private boolean willBecomeCritter;
 			for (Actor a: actors) {
 				if (a instanceof Critter) {
 					numCritters++;
-					
+
 				}
 			}
-			
-			if (numCritters == 0) {
+
+			if (numCritters == 0) {//if there are actor neighbors but none are Critters
 				willBecomeCritter = true;
 			}
-			
+
 		}
+
 	}
-	
-	
+
+
 	public void makeMove(Location loc) {
-		int newDirection = getLocation().getDirectionToward(loc);
-		setDirection(newDirection);
-		
-		if (loc == null || willBecomeCritter) {
-            System.out.println("SAR: no neighbor, will turn to SACritter");
+
+		System.out.println("SAR becomeCritter(): 1");
+		if ( willBecomeCritter) {
+			System.out.println("SAR: Turn to SACritter");
 			becomeCritter();
-            
+
 		}
 		else {
-			System.out.println("SAR: at least 1 CritterNeighbor so do nothing");
+			System.out.println("SAR becomeCritter(): B");
+			System.out.println("SAR: Do nothing");
 		}
-       
+		rockTurnNum++;
 	}
-	
-	
+
+
 	private void becomeCritter() {
-//		System.out.println("SAR becomeCritter(): 1");
-//
-//		System.out.println("SAR becomeCritter(): 2");
+		//		System.out.println("SAR becomeCritter(): 1");
+		//
+		//		System.out.println("SAR becomeCritter(): 2");
 
 		SocialAnxietyCritter critterForm = new SocialAnxietyCritter();
 		System.out.println("SAR becomeCritter(): 3");
-		
+
 		critterForm.putSelfInGrid(getGrid(), getLocation());
 		System.out.println("SAR becomeCritter(): 4");
 
-		
-		
+
+
 	}
-	
-	
+
+
 }

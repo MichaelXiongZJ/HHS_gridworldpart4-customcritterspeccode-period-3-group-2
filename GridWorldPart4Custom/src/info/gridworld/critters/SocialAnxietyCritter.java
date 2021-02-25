@@ -193,16 +193,18 @@ public class SocialAnxietyCritter extends Critter
 	  * 
 	  */
 	public void makeMove(Location loc) {
+		System.out.println();
 		int newDirection = getLocation().getDirectionToward(loc);
 		setDirection(newDirection);
 		
 		if (loc == null || willBecomeRock) {
-            becomeRock();
+            System.out.println("SAC.makeMove() A1");
+			becomeRock();
 
 		}
         else {
-            moveTo(loc); 
-            System.out.println("makeMove: B1");
+        	System.out.println("SAC.makeMove: B1");
+        	moveTo(loc); 
 
         }
 	}
@@ -215,19 +217,14 @@ public class SocialAnxietyCritter extends Critter
 
 	
 	private void becomeRock() {
-//		System.out.println("SAC becomeRock(): 1");
-//		System.out.println("SAC becomeRock(): 2");
-        
         SocialAnxietyRock rockForm = new SocialAnxietyRock();
-        
-//		System.out.println("SAC becomeRock(): 3");
         rockForm.putSelfInGrid(getGrid(), getLocation());
         
-//        getGrid().put(getLocation(), rockForm);//Chris: I'm not really sure if this works
         
+        
+//		System.out.println("SAC becomeRock(): 3"); 
+//      getGrid().put(getLocation(), rockForm);//Chris: I'm not really sure if this works
 //		System.out.println("SAC becomeRock(): 4");
-		
-		
 //		removeSelfFromGrid();
 
 	}
