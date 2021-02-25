@@ -132,7 +132,7 @@ public class SocialAnxietyCritter extends Critter
 			}else {
 				deg = Math.atan(yDiff/xDiff);
 			}*/
-			
+			/*
 			if(yDiff>=0 && x<0) { //1st quadrant
 				deg = Math.atan(yDiff/(-xDiff));
 				deg = 2*Math.PI - deg;
@@ -154,18 +154,17 @@ public class SocialAnxietyCritter extends Critter
 				deg = deg - 360;
 			}
 			System.out.println("New angle = " + roundNumber((int)deg, 45));
-			
+			*/
 			
 			//Get the next location
 			ArrayList<Location> nextLoc = new ArrayList<Location>();
-			
-			
+					
 			//Chris: Uhhh here's a simpler way to do the angle calculations
+			//Mic: Yea ur right, i forgot we have these methods lol.
 			Location otherLoc = listOfActors.get(actorIndex).getLocation();
 			int moveDir = 180+getLocation().getDirectionToward(otherLoc);
 			nextLoc.add(0, getLocation().getAdjacentLocation(moveDir));
-			
-			
+					
 //			nextLoc.add(0, getLocation().getAdjacentLocation(roundNumber((int)deg, 45)));
 			System.out.println("Loc = " + nextLoc.get(0));
 			return nextLoc;
