@@ -132,20 +132,24 @@ public class SocialAnxietyCritter extends Critter
 			
 			if(yDiff>=0 && x<0) { //1st quadrant
 				deg = Math.atan(yDiff/(-xDiff));
-				deg = 360 - deg;
+				deg = 2*Math.PI - deg;
 			}else if(yDiff>0 && xDiff>=0) { //2nd quadrant
 				deg = Math.atan(xDiff/yDiff);
-				deg = 270 - deg;
+				deg = 1.5*Math.PI - deg;
 			}else if(yDiff<=0 && xDiff>0) { //3rd quadrant
 				deg = Math.atan(-yDiff/xDiff);
-				deg = 180 - deg;
+				deg = Math.PI - deg;
 			}else if(yDiff<0 && xDiff<=0) { //4th quadrant
 				deg = Math.atan(-xDiff/-yDiff);
-				deg = 90 - deg;
+				deg = 1/2*Math.PI - deg;
 			}else {
 				System.out.println("Turn angle unknown");
 			}
 			deg = Math.toDegrees(deg);
+			deg = deg + 180;
+			if(deg > 360) {
+				deg = deg - 360;
+			}
 			int facingDeg = roundNumber((int)deg, 45);
 			//Get the next location
 			ArrayList<Location> nextLoc = new ArrayList<Location>();
